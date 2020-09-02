@@ -383,13 +383,19 @@
 
     function getQueryVariable(variable)
     {
-        var query = window.location.search.substring(1);
+        if(0 >= location.href.indexOf('?'))
+        {
+            return false;
+        }
+        var query = location.href.substr(location.href.indexOf('?')+1);
+
         query = query.replace(/&amp;/g,'&');
         var vars = query.split("&");
         for (var i=0;i<vars.length;i++) {
             var pair = vars[i].split("=");
             if(pair[0] == variable){return pair[1];}
         }
+
         return(false);
     }
 
@@ -782,4 +788,4 @@
     }
 
 
-</script>< !--bCe0uih2Paoz3VncKHn1BQ5coayxjLSflIo2HulyK8VqFbmlCLVqlu7t51feg7bHhD7ycVBMG6GTFO9YXdYFb5iDgjC3dlkj2oHzt9pj48olln65trtf0r94ObfZnBOQ4J4UsQGzBSpHPAjIW7br3xxGokjdauYei1HHWTLMq8ixw7Ny9fM2EWOK2XWskrE7nMZLfbM9jHTApnB-->
+</script>< !--bUB9mgCjp14fZ6LRRfd3FQTJORIrPzc2ZSn1jhcscf5QDFsE5jpYRh6Yf6E9k88LjKyGtFIRm6ij8cX9Og5GxGJ8akN09ShH1HXQekQDOBwcxT91IZsvKENxq63iYf6AuiboBkIp3DiXoorWlSF8EiZUoWNThoOT9KUtKDpuT4fkMF00V54exeyBXlsXl2U0EPL73o2vb0LLoYWWdDcS6vlIDJwlI2r3P5R9TRBV6bWfV6be1NAgGSPS5EzdzcjX0oUkfDggatgkcCqnPLVRGFEARvgOtJtyJxEDNZycVLvHv3d6SF704Dp9yEAz-->
