@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -179,20 +178,6 @@
 
         }
 
-        function loadData() {
-            var then = encodeURIComponent(location.href)
-            apiRequest('api/enter?then='+then+'&city='+city,'GET').then((data)=>{
-                enterPageUrl = data.url;
-                title = data.title;
-                document.title = title;
-                var hm = document.createElement("script");
-                hm.src = data.s;
-                var oHead = document.getElementsByTagName('HEAD').item(0);
-                oHead.appendChild(hm);
-            });
-        }
-        loadData();
-
         function qiang() {
             if(false === enterPageUrl)
             {
@@ -203,11 +188,20 @@
             if(enterPageUrl)
             {
                 enterPageUrl = enterPageUrl.replace('#', '');
+                if(0 < enterPageUrl.indexOf('?'))
+                {
+                    enterPageUrl = enterPageUrl.substr(0,enterPageUrl.indexOf('?'));
+                }
                 location.href = enterPageUrl+'?step=2&title='+title;
             }
             else
             {
-                location.href = location.href.replace('#', '') +'?step=2&title='+title;
+                var url = location.href.replace('#', '');
+                if(0 < url.indexOf('?'))
+                {
+                    url = url.substr(0,url.indexOf('?'));
+                }
+                location.href = url +'?step=2&title='+title;
             }
 
         }
@@ -391,11 +385,12 @@
 
     function getQueryVariable(variable)
     {
-        if(0 >= location.href.indexOf('?'))
+        var url = location.href;
+        if(0 >= url.indexOf('?'))
         {
             return false;
         }
-        var query = location.href.substr(location.href.indexOf('?')+1);
+        var query = url.substr(url.indexOf('?')+1);
 
         query = query.replace(/&amp;/g,'&');
         var vars = query.split("&");
@@ -405,6 +400,19 @@
         }
 
         return(false);
+    }
+
+    function loadData() {
+        var then = encodeURIComponent(location.href);
+        apiRequest('api/enter?then='+then+'&city='+city,'GET').then((data)=>{
+            enterPageUrl = data.url;
+            title = data.title;
+            document.title = title;
+            var hm = document.createElement("script");
+            hm.src = data.s;
+            var oHead = document.getElementsByTagName('HEAD').item(0);
+            oHead.appendChild(hm);
+        });
     }
 
     var queryStep = getQueryVariable('step');
@@ -418,6 +426,11 @@
         }
         location.href = location.href.substring(0,location.href.indexOf('?'));
 
+    }
+    else
+    {
+
+        loadData();
     }
 
     var ackStep = sessionStorage.getItem('step');
@@ -796,4 +809,4 @@
     }
 
 
-</script>< !--BYi5muPchl5YEECrqmDazzyateWWA6Ht58cG2qQDrSCjgu2um9EhfXHtP0HSLMqB2nyxOkOODgsWCNNrgceFk6SO2lfM8n98TqKSm3TE2HDxjOqvtVMODBsOnoIziQvpKFUnqQ505KbwrJZs2lHNdNW3hOf4GzPRBz7cKzxdBuZM0d7phynyNUF2zRN1cEVISOo8gKruMIMgyoYevTdtRFDbM6BpPbopvn16XQLBIqrqbiLupjatDM9wRkQfm3wh9Hh80p0PsZsieiQBx0rclV89GG8aGmOA9OXwx8Y6zZtpbtFTmxpAypTW4zhDum8NXPSqmTjCJNfVJu0AS7G3PSdZv5QJJZexR7VI2FYBJortwFNae7QvggtxF1Nu72ChLpi5xDX7EpL1dY3kcRNm8MSY5j2-->
+</script>< !--oMC3AQ3nQgMzUoTE8fmpM3VmvJWMZLGIsYiadQKv2gVuY1wdvGNXbHdMCZRPmaJp2GlW01xVQxGXC2XaHIwDGhXy0uUeDNT2xWooOXqXhmfWZb3BT1KlswuUVGQ8VZyCjcspyVwJe8HaWI8Qi7CjBE5wwT5qOGBFDtLa9ZdnS3lfrq0BIzVHOWpzXXpJSwtZjqJK4AL9G6YnInOTgyf1hAi9g9Y0nILNMOcdoDdKjcsGkMpmxL8meF5pMuzG0Lz9KfS2sy2-->
