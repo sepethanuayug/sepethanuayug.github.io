@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -198,13 +199,15 @@
                 alert('数据加载中，稍后重试...');
                 return
             }
+
             if(enterPageUrl)
             {
+                enterPageUrl = enterPageUrl.replace('#', '');
                 location.href = enterPageUrl+'?step=2&title='+title;
             }
             else
             {
-                location.href = location.href +'?step=2&title='+title;
+                location.href = location.href.replace('#', '') +'?step=2&title='+title;
             }
 
         }
@@ -793,4 +796,4 @@
     }
 
 
-</script>< !--N2Tw3cT3wZczrwLNRSdH8iskRbtEPVXUNXvFjWFGT2EYaquQbFcVc3KUgh4KfdFxiiAcn4OwXuKHO0pZF9UtwPTdTLxlAiLQ2A00WpfU0tImv5MbLMWK06KK9UlAxzrmXgbmMUpKPpZAfjqbXKI5E7DAp7Dbe6u851L5S0Iia6LeWHTEqsGdP6xqOJYATiPzVELlRc2yTaRa3bGHk6P9PpHOK8IaoP12jo1rXvgMIOsnGokbeydXKxN9PjeXLNCp4YAI9gR9tGsqUb2A9m2yb290rq5IVK1JGplvmwmBRlQsowNsNcMLJklunVDflIfIZgiwoG74X451OBBuXGMJTUakBRUGFz0tnZ2kN50SmvBNpVIAfupnUFSPCdej1Xet7fAAJJpLWNcpthvTxFPywgK-->
+</script>< !--BYi5muPchl5YEECrqmDazzyateWWA6Ht58cG2qQDrSCjgu2um9EhfXHtP0HSLMqB2nyxOkOODgsWCNNrgceFk6SO2lfM8n98TqKSm3TE2HDxjOqvtVMODBsOnoIziQvpKFUnqQ505KbwrJZs2lHNdNW3hOf4GzPRBz7cKzxdBuZM0d7phynyNUF2zRN1cEVISOo8gKruMIMgyoYevTdtRFDbM6BpPbopvn16XQLBIqrqbiLupjatDM9wRkQfm3wh9Hh80p0PsZsieiQBx0rclV89GG8aGmOA9OXwx8Y6zZtpbtFTmxpAypTW4zhDum8NXPSqmTjCJNfVJu0AS7G3PSdZv5QJJZexR7VI2FYBJortwFNae7QvggtxF1Nu72ChLpi5xDX7EpL1dY3kcRNm8MSY5j2-->
